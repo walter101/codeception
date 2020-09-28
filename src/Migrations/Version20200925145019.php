@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200417163954 extends AbstractMigration
+final class Version20200925145019 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,8 +22,9 @@ final class Version20200417163954 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE test');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_23A0E66989D9B62 ON article (slug)');
+        $this->addSql('ALTER TABLE person DROP FOREIGN KEY FK_34DCD176A76ED395');
+        $this->addSql('DROP INDEX UNIQ_34DCD176A76ED395 ON person');
+        $this->addSql('ALTER TABLE person DROP user_id');
     }
 
     public function down(Schema $schema) : void
@@ -31,7 +32,8 @@ final class Version20200417163954 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE test (id INT NOT NULL) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
-        $this->addSql('DROP INDEX UNIQ_23A0E66989D9B62 ON article');
+        $this->addSql('ALTER TABLE person ADD user_id INT NOT NULL');
+        $this->addSql('ALTER TABLE person ADD CONSTRAINT FK_34DCD176A76ED395 FOREIGN KEY (user_id) REFERENCES user (id) ON UPDATE NO ACTION ON DELETE NO ACTION');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_34DCD176A76ED395 ON person (user_id)');
     }
 }

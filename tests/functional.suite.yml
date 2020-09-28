@@ -1,0 +1,37 @@
+# Codeception Test Suite Configuration
+#
+# Suite for functional tests
+# Emulate web requests and make application process them
+# Include one of framework modules (Symfony2, Yii2, Laravel5) to use it
+# Remove this suite if you don't use frameworks
+
+actor: FunctionalTester
+modules:
+    enabled:
+        - PhpBrowser:
+              url: 'http://host.docker.internal:8100/'
+#        - Symfony:
+#            app_path: 'src'
+#            environment: 'local'
+#        - Doctrine2:
+#            depends: Symfony
+#            cleanup: true
+        - Db:
+              dsn: 'mysql:host=mysql:3306;dbname=codeception'
+              user: 'root'
+              password: 'root'
+              # location of your database dump file:
+              dump: 'tests/_data/codeception.sql'
+              populate: true
+              cleanup: true
+              reconnect: true
+              databases:
+                DATABASE2_USE_THIS_NAME_IN_YOUR_CODE:
+                  dsn: 'mysql:host=mysql:3306;dbname=testdatabase'
+                  user: 'root'
+                  password: 'root'
+                  dump: 'tests/dumps/testdatabase.sql'
+                  populate: true
+                  cleanup: false
+        - \App\Tests\Helper\Functional
+#DATABASE_URL=mysql://root:root@mysql:3306/codeception
