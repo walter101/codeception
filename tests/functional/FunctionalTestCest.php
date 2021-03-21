@@ -1,16 +1,17 @@
-<?php namespace App\Tests;
+<?php
+namespace App\Tests\functional;
 use App\Tests\FunctionalTester;
 use App\Entity\Person;
 use Codeception\Module\Db;
 
-class firstTestCest
+class FunctionalTestCest
 {
     public function _before(FunctionalTester $I)
     {
     }
 
     // tests
-    public function tryToTest(FunctionalTester $I)
+    public function databaseTest(FunctionalTester $I)
     {
         $I->amOnPage('/start');
         $I->see('Person is added');
@@ -41,5 +42,7 @@ class firstTestCest
 
         // Update een record in de database (blijft ge-update ook na de test)
         $I->updateInDatabase('person', ['first_name' => 'walterzzz'], ['first_name' => 'walter']);
+
+        $test = 10;
     }
 }

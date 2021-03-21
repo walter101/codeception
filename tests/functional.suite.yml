@@ -16,22 +16,5 @@ modules:
 #        - Doctrine2:
 #            depends: Symfony
 #            cleanup: true
-        - Db:
-              dsn: 'mysql:host=mysql:3306;dbname=codeception'
-              user: 'root'
-              password: 'root'
-              # location of your database dump file:
-              dump: 'tests/_data/codeception.sql'
-              populate: true
-              cleanup: true
-              reconnect: true
-              databases:
-                DATABASE2_USE_THIS_NAME_IN_YOUR_CODE:
-                  dsn: 'mysql:host=mysql:3306;dbname=testdatabase'
-                  user: 'root'
-                  password: 'root'
-                  dump: 'tests/dumps/testdatabase.sql'
-                  populate: true
-                  cleanup: false
         - \App\Tests\Helper\Functional
 #DATABASE_URL=mysql://root:root@mysql:3306/codeception

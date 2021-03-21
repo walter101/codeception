@@ -1,7 +1,8 @@
-<?php namespace App\Tests;
+<?php
+namespace App\Tests\acceptance;
 use App\Tests\AcceptanceTester;
 
-class FirstCest
+class acceptanceTestCest
 {
     public function _before(AcceptanceTester $I)
     {
@@ -16,5 +17,6 @@ class FirstCest
     {
         $I->amOnPage('/start');
         $I->see('Person is added');
+        $I->see('abcd');
     }
 }

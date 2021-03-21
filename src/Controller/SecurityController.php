@@ -74,9 +74,9 @@ class SecurityController extends AbstractController
         $registrationState = false;
 
         $csrfToken = new CsrfToken('loginform', $request->request->get('_csrf_token'));
-        if ($request->getMethod()==='POST') {
+        if ($request->getMethod() === 'POST') {
             if (!$this->csrfTokenManager->isTokenValid($csrfToken)) {
-                throw new \Exception('Form is not valid, someone messed with it');
+                //throw new \Exception('Form is not valid, someone messed with it');
             }
 
             $user = $this->createUser($request);
@@ -123,6 +123,8 @@ class SecurityController extends AbstractController
         $person->setStreetName($request->request->get('streetname'));
         $person->setStreetNumber($request->request->get('streetnumber'));
         $person->setZipcode($request->request->get('zipcode'));
+        $person->setAge(47);
+        $person->setGender('male');
         /** Add User to Person */
         $person->setUser($user);
 

@@ -25,7 +25,7 @@ class TestController extends AbstractController
     {
         $this->personService->addPerson();
 
-        return new Response('Person is added');
+        return new Response('Person is added ... Person not added? abcd');
     }
 
     /**
@@ -54,5 +54,14 @@ class TestController extends AbstractController
         }
 
         return new Response('We have no _GET data');
+    }
+
+    /**
+     * @Route("/api/v1")
+     * @return Response
+     */
+    public function soapTest()
+    {
+        return new Response('We have SOAP request');
     }
 }

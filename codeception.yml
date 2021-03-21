@@ -11,3 +11,32 @@ extensions:
         - Codeception\Extension\RunFailed
 params:
     - .env
+    - config/codeception.yml
+
+modules:
+    enabled:
+        - PhpBrowser:
+              url: 'http://host.docker.internal:8100/'
+        #        - Symfony:
+        #            app_path: 'src'
+        #            environment: 'local'
+        #        - Doctrine2:
+        #            depends: Symfony
+        #            cleanup: true
+        - Db:
+              dsn: '%codeception.database.dns%'
+              user: '%codeception.database.username%'
+              password: '%codeception.database.password%'
+              # location of your database dump file:
+              dump: 'tests/_data/codeception.sql'
+              populate: true
+              cleanup: true
+              reconnect: true
+              databases:
+                  DATABASE2_USE_THIS_NAME_IN_YOUR_CODE:
+                      dsn: 'mysql:host=mysql:3306;dbname=testdatabase'
+                      user: 'root'
+                      password: 'root'
+                      dump: 'tests/dumps/testdatabase.sql'
+                      populate: true
+                      cleanup: false

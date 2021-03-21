@@ -1,0 +1,7 @@
+codeception:
+  database:
+    dns: 'mysql:host=mysql:3306;dbname=codeception'
+    username: root
+    password: root
+  mysql:
+    initial.dump: tests/_data/codeception.sql

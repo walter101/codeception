@@ -5,4 +5,14 @@ modules:
           url: 'http://host.docker.internal:8100/'
           depends: PhpBrowser
 #        - \App\Tests\Helper\Api
-
+      - Db:
+          dsn: 'mysql:host=mysql:3306;dbname=codeception'
+          user: 'root'
+          password: 'root'
+          # location of your database dump file:
+          dump: 'tests/_data/codeception.sql'
+          # Use the dumpfile to populate the database?
+          populate: true
+          # Cleanup: will the dump file be reloaded before each test yes/no
+          cleanup: true
+          reconnect: true

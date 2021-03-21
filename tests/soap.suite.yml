@@ -1,0 +1,9 @@
+actor: SoapTester
+modules:
+    enabled:
+        - PhpBrowser:
+            url: 'http://host.docker.internal:8100/soap/test'
+        - SOAP:
+            depends: PhpBrowser
+            endpoint: 'http://host.docker.internal:8100/soap/test'
+        - \App\Tests\Helper\Soap

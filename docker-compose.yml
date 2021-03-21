@@ -13,7 +13,7 @@ services:
         - /opt/mysql_data:/var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=codespy
+        - MYSQL_DATABASE=codeception
         - MYSQL_USER=root
         - MYSQL_PASSWORD=root
       ports:

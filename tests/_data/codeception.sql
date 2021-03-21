@@ -21,6 +21,15 @@ SET time_zone = "+00:00";
 -- Database: `codeception`
 --
 
+/* ff test om te zien of na gebruik env var de initial dump nog werkt, kan dus weg */
+CREATE TABLE `walter_test` (
+    `id` int NOT NULL,
+    `user_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `walter_test2` (
+                               `id` int NOT NULL,
+                               `user_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 -- --------------------------------------------------------
 
 --
